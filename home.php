@@ -15,85 +15,74 @@
 	</div>
 </div>
 <!--MAIN HEADER AREA END -->
-
 <section class="section blog-wrap ">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8">
 				<div class="row">
-					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					<div class="col-lg-6">
-						<div class="blog-post">
-							<?php
-									// должно назодится внутри цикла
-									if (has_post_thumbnail()) {
-										the_post_thumbnail('medium', array('class' => "img-rluid"));
-									} else {
-										echo '<img class="img-rluid" src="' . get_template_directory_uri() . '/images/blog/blog-1.jpg" />';
-									}
-									?>
-							<div class="mt-4 mb-3 d-flex">
-								<div class="post-author mr-3">
-									<i class="fa fa-user"></i>
-									<span class="h6 text-uppercase"><?php the_author(); ?></span>
-								</div>
-								<div class="post-info">
-									<i class="fa fa-calendar-check"></i>
-									<span><?php the_time('j F Y'); ?></span>
-								</div>
-							</div>
-							<a href="<?php echo get_the_permalink(); ?>" class="h4 "><?php the_title(); ?></a>
-							<p class="mt-3"><?php the_excerpt(); ?></p>
-							<a href="<?php echo get_the_permalink(); ?>" class="read-more">Читать статью <i
-									class="fa fa-angle-right"></i></a>
-						</div>
-					</div>
-					<?php endwhile;
+					<?php $cnt = 0; //объявляем счетчик
+					if (have_posts()) : while (have_posts()) : the_post(); // проверяем емть ли посты
+							$cnt++; // увеличиваем счетчик на +1
+							switch ($cnt) {
+								case '3': ?>
+									<div class="col-lg-12">
+										<div class="blog-post">
+											<?php
+											if (has_post_thumbnail()) {
+												the_post_thumbnail('post-thumbnail', array('class' => "img-fluid w-100"));
+											} else {
+												echo '<img class="img-rluid" src="' . get_template_directory_uri() . '/images/blog/blog-1.jpg" />';
+											}
+											?>
+											<div class="mt-4 mb-3 d-flex">
+												<div class="post-author mr-3">
+													<i class="fa fa-user"></i>
+													<span class="h6 text-uppercase"><?php the_author(); ?></span>
+												</div>
+												<div class="post-info">
+													<i class="fa fa-calendar-check"></i>
+													<span><?php the_time('j F Y'); ?></span>
+												</div>
+											</div>
+											<a href="<?php echo get_the_permalink(); ?>" class="h4 "><?php the_title(); ?></a>
+											<p class="mt-3"><?php the_excerpt(); ?></p>
+											<a href="<?php echo get_the_permalink(); ?>" class="read-more">Читать статью <i class="fa fa-angle-right"></i></a>
+										</div>
+									</div>
+								<?php
+									break;
+								default:
+								?>
+									<div class="col-lg-6">
+										<div class="blog-post">
+											<?php
+											if (has_post_thumbnail()) {
+												the_post_thumbnail('post-thumbnail', array('class' => "img-fluid w-100 w-100 w-100"));
+											} else {
+												echo '<img class="img-rluid" src="' . get_template_directory_uri() . '/images/blog/blog-1.jpg" />';
+											}
+											?>
+											<div class="mt-4 mb-3 d-flex">
+												<div class="post-author mr-3">
+													<i class="fa fa-user"></i>
+													<span class="h6 text-uppercase"><?php the_author(); ?></span>
+												</div>
+												<div class="post-info">
+													<i class="fa fa-calendar-check"></i>
+													<span><?php the_time('j F Y'); ?></span>
+												</div>
+											</div>
+											<a href="<?php echo get_the_permalink(); ?>" class="h4 "><?php the_title(); ?></a>
+											<p class="mt-3"><?php the_excerpt(); ?></p>
+											<a href="<?php echo get_the_permalink(); ?>" class="read-more">Читать статью <i class="fa fa-angle-right"></i></a>
+										</div>
+									</div>
+						<?php break;
+							}
+						endwhile;
 					else : ?>
-					Записей нет.
+						Записей нет.
 					<?php endif; ?>
-				</div>
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="blog-post">
-							<img src="images/blog/blog-2.jpg" alt="" class="img-fluid">
-							<div class="mt-4 mb-3 d-flex">
-								<div class="post-author mr-3">
-									<i class="fa fa-user"></i>
-									<span class="h6 text-uppercase">Олег Торпяков</span>
-								</div>
-								<div class="post-info">
-									<i class="fa fa-calendar-check"></i>
-									<span>12 апреля 2020</span>
-								</div>
-							</div>
-							<a href="blog-single.html" class="h4 ">Использовать шаблоны — плохо? </a>
-							<p class="mt-3">Отвечаю на больной вопрос от наших клиентов: стоит ли использовать шаблоны для сайта в
-								своих проектах.</p>
-							<a href="blog-single.html" class="read-more">Читать статью <i class="fa fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="blog-post">
-							<img src="images/blog/blog-lg.jpg" alt="" class="img-fluid">
-							<div class="mt-4 mb-3 d-flex">
-								<div class="post-author mr-3">
-									<i class="fa fa-user"></i>
-									<span class="h6 text-uppercase">Марина Цветкова</span>
-								</div>
-								<div class="post-info">
-									<i class="fa fa-calendar-check"></i>
-									<span>30 марта 2020</span>
-								</div>
-							</div>
-							<a href="blog-single.html" class="h4 ">Провал в стратегии продвижения</a>
-							<p class="mt-3">Что делать, если вы наняли некомпетентного специалиста для продвижения? Можно ли спасти
-								проект, который попал в теневой бан или нет.</p>
-							<a href="blog-single.html" class="read-more">Читать статью <i class="fa fa-angle-right"></i></a>
-						</div>
-					</div>
 				</div>
 			</div>
 			<div class="col-lg-4">

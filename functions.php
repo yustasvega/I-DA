@@ -19,6 +19,7 @@ if (!function_exists('band_ida_setup')) {
 		add_theme_support('title-tag');
 		// включаем миниатюры для постов и страниц
 		add_theme_support('post-thumbnails');
+		set_post_thumbnail_size(730, 480); // размер миниатюры поста по умолчанию
 	}
 	add_action('after_setup_theme', 'band_ida_setup');
 }
@@ -126,4 +127,19 @@ class bootstrap_4_walker_nav_menu extends Walker_Nav_Menu
 
 		$output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
 	}
+}
+
+## отключаем создание миниатюр файлов для указанных размеров
+add_filter('intermediate_image_sizes', 'delete_intermediate_image_sizes');
+
+function delete_intermediate_image_sizes($sizes)
+{
+
+	// размеры которые нужно удалить
+	return array_diff($sizes, [
+		'medium_large',
+		'large',
+		'1536x1536',
+		'2048x2048',
+	]);
 }

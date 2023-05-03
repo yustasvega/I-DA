@@ -8,7 +8,7 @@
 			<div class="col-lg-8 m-auto text-center col-sm-12 col-md-12">
 				<div class="banner-content content-padding">
 					<h1 class="text-white">Наши услуги</h1>
-					<p>Мы оказываем весь спект диджитал услуг</p>
+					<p>Мы оказываем весь спектр диджитал услуг</p>
 				</div>
 			</div>
 		</div>

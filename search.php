@@ -17,7 +17,6 @@
 	</div>
 </div>
 <!--MAIN HEADER AREA END -->
-
 <section class="section blog-wrap ">
 	<div class="container">
 		<div class="row">

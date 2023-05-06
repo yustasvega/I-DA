@@ -6,8 +6,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="seo & digital marketing" />
-	<meta name="keywords"
-		content="marketing, digital marketing, creative, agency, startup, i-da,onepage, clean, modern, seo, business, company" />
+	<meta name="keywords" content="marketing, digital marketing, creative, agency, startup, i-da,onepage, clean, modern, seo, business, company" />
 	<?php wp_head(); ?>
 
 </head>
@@ -22,8 +21,7 @@
 				}
 				?>
 			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav"
-				aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon">
 					<i class="fa fa-bars"></i>
 				</span>

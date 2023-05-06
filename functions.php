@@ -174,8 +174,16 @@ function band_ida_widgets_init()
 	));
 	register_sidebar(array(
 		'name'          => esc_html__('Сайдбар в подвале', 'band_ida'),
-		'id'            => "sidebar-footer",
-		'before_widget' => '<section id="%1$s" class="footer_widget %2$s">',
+		'id'            => "sidebar-footer-text",
+		'before_widget' => '<section id="%1$s" class="footer_widget footer-link %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4>',
+		'after_title'   => '</h4>'
+	));
+	register_sidebar(array(
+		'name'          => esc_html__('Контакты в подвале', 'band_ida'),
+		'id'            => "sidebar-footer-contacts",
+		'before_widget' => '<section id="%1$s" class="footer_widget footer-text %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h4>',
 		'after_title'   => '</h4>'
@@ -236,19 +244,22 @@ class Download_Widget extends WP_Widget
 		$file_name = @$instance['file_name'] ?: 'Название файла';
 		$file = @$instance['file'] ?: 'URL файла';
 ?>
-		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($file); ?>">
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id('file_name'); ?>"><?php _e('Название файла'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_name('file_name'); ?> name=" <?php echo $this->get_field_name('file_name'); ?> type="text" value="<?php echo esc_attr($file); ?>">
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id('file'); ?>"><?php _e('Ссылка на файл'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_name('file'); ?> name=" <?php echo $this->get_field_name('file'); ?> type="text" value="<?php echo esc_attr($file); ?>">
-		</p>
-		<?php
+<p>
+	<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+	<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>"
+		name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($file); ?>">
+</p>
+<p>
+	<label for="<?php echo $this->get_field_id('file_name'); ?>"><?php _e('Название файла'); ?></label>
+	<input class="widefat" id="<?php echo $this->get_field_name('file_name'); ?> name="
+		<?php echo $this->get_field_name('file_name'); ?> type="text" value="<?php echo esc_attr($file); ?>">
+</p>
+<p>
+	<label for="<?php echo $this->get_field_id('file'); ?>"><?php _e('Ссылка на файл'); ?></label>
+	<input class="widefat" id="<?php echo $this->get_field_name('file'); ?> name="
+		<?php echo $this->get_field_name('file'); ?> type="text" value="<?php echo esc_attr($file); ?>">
+</p>
+<?php
 	}
 
 
@@ -297,11 +308,11 @@ class Download_Widget extends WP_Widget
 			if (!apply_filters('show_download_widget_style', true, $this->id_base))
 				return;
 		?>
-			<style type="text/css">
-				.download_widget a {
-					display: inline;
-				}
-			</style>
+<style type="text/css">
+.download_widget a {
+	display: inline;
+}
+</style>
 <?php
 		}
 	}

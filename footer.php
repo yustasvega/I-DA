@@ -12,20 +12,19 @@
 				</div>
 			</div>
 			<div class="col-lg-2 col-sm-4 col-md-4">
-				<div class="footer-widget footer-link">
-					<h4>Информация</h4>
-					<ul>
-						<li><a href="#">о нас</a></li>
-						<li><a href="#">услуги</a></li>
-						<li><a href="#">цены</a></li>
-						<li><a href="#">команда</a></li>
-						<li><a href="#">отзывы</a></li>
-						<li><a href="#">журнал</a></li>
-					</ul>
-				</div>
+				<?php wp_nav_menu([
+					'theme_location'  => 'footer_left',
+					'container'       => false,
+					'menu_class'      => 'footer-widget footer-link',
+					'echo'            => true,
+					'items_wrap'      => '<h4>Информация</h4><ul id="%1$s" class="%2$s">%3$s</ul>',
+					'depth'           => 2,
+				]) ?>
 			</div>
 
 			<div class="col-lg-2 col-sm-6 col-md-6">
+
+
 				<div class="footer-widget footer-link">
 					<h4>Сылки</h4>
 					<ul>

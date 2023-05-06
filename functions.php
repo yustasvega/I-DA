@@ -68,7 +68,8 @@ function band_ida_menus()
 	// собираем несколько зон (областей) меню
 	$locations = array(
 		'header' => __('Header Menu', 'band_ida'),
-		'footer' => __('Footer Menu', 'band_ida'),
+		'footer_left' => __('Footer Left Menu', 'band_ida'),
+		'footer_right' => __('Footer Right Menu', 'band_ida'),
 	);
 	// регистрируем области меню, которые лежат в переменной $locations
 	register_nav_menus($locations);
@@ -170,7 +171,15 @@ function band_ida_widgets_init()
 		'after_widget'  => '</section>',
 		'before_title'  => '<h5 class="widget-title mb-3">',
 		'after_title'   => '</h5>'
-	) );
+	));
+	register_sidebar(array(
+		'name'          => esc_html__('Сайдбар в подвале', 'band_ida'),
+		'id'            => "sidebar-footer",
+		'before_widget' => '<section id="%1$s" class="footer_widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4>',
+		'after_title'   => '</h4>'
+	));
 }
 /**
  * Добавление нового виджета Download_Widget.
@@ -212,7 +221,7 @@ class Download_Widget extends WP_Widget
 		if (!empty($title)) {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
-		echo '<a href="'.$file.'"><i class="fa-fa-file-pdf"></i>'.$file_name.'</a>';
+		echo '<a href="' . $file . '"><i class="fa-fa-file-pdf"></i>' . $file_name . '</a>';
 		echo $args['after_widget'];
 	}
 
@@ -223,26 +232,23 @@ class Download_Widget extends WP_Widget
 	 */
 	function form($instance)
 	{
-		$title = @ $instance['title'] ?: 'Полезные файлы';
-		$file_name = @ $instance['file_name'] ?: 'Название файла';
-		$file = @ $instance['file'] ?: 'URL файла';
+		$title = @$instance['title'] ?: 'Полезные файлы';
+		$file_name = @$instance['file_name'] ?: 'Название файла';
+		$file = @$instance['file'] ?: 'URL файла';
 ?>
-<p>
-	<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
-	<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>"
-		name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($file); ?>">
-</p>
-<p>
-	<label for="<?php echo $this->get_field_id('file_name'); ?>"><?php _e('Название файла'); ?></label>
-	<input class="widefat" id="<?php echo $this->get_field_name('file_name'); ?> name="
-		<?php echo $this->get_field_name('file_name'); ?> type="text" value="<?php echo esc_attr($file); ?>">
-</p>
-<p>
-	<label for="<?php echo $this->get_field_id('file'); ?>"><?php _e('Ссылка на файл'); ?></label>
-	<input class="widefat" id="<?php echo $this->get_field_name('file'); ?> name="
-		<?php echo $this->get_field_name('file'); ?> type="text" value="<?php echo esc_attr($file); ?>">
-</p>
-<?php
+		<p>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($file); ?>">
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id('file_name'); ?>"><?php _e('Название файла'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_name('file_name'); ?> name=" <?php echo $this->get_field_name('file_name'); ?> type="text" value="<?php echo esc_attr($file); ?>">
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id('file'); ?>"><?php _e('Ссылка на файл'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_name('file'); ?> name=" <?php echo $this->get_field_name('file'); ?> type="text" value="<?php echo esc_attr($file); ?>">
+		</p>
+		<?php
 	}
 
 
@@ -268,43 +274,43 @@ class Download_Widget extends WP_Widget
 	}
 
 	// скрипт виджета
-	function add_download_widget_scripts( $new_instance ){
+	function add_download_widget_scripts($new_instance)
+	{
 		$instans = array();
-		$instans['title'] = ( ! empty( $new_instance['title'] )) ? strip_tags( $new_instance['title']): '';
+		$instans['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
 
-		$instans['title'] = ( ! empty( $new_instance['title'] )) ? strip_tags( $new_instance['title']): '';
-		return $instans;
-	{
-		// фильтр чтобы можно было отключить скрипты
-		if (!apply_filters('show_download_widget_script', true, $this->id_base))
-			return;
+		$instans['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
+		return $instans; {
+			// фильтр чтобы можно было отключить скрипты
+			if (!apply_filters('show_download_widget_script', true, $this->id_base))
+				return;
 
-		$theme_url = get_template_directory_uri();
+			$theme_url = get_template_directory_uri();
 
-		// wp_enqueue_script('download_widget_script', $theme_url . '/js/download_widget_script.js');
-	}
+			// wp_enqueue_script('download_widget_script', $theme_url . '/js/download_widget_script.js');
+		}
 
-	// стили виджета
-	function add_download_widget_style()
-	{
-		// фильтр чтобы можно было отключить стили
-		if (!apply_filters('show_download_widget_style', true, $this->id_base))
-			return;
-	?>
-<style type="text/css">
-.download_widget a {
-	display: inline;
-}
-</style>
+		// стили виджета
+		function add_download_widget_style()
+		{
+			// фильтр чтобы можно было отключить стили
+			if (!apply_filters('show_download_widget_style', true, $this->id_base))
+				return;
+		?>
+			<style type="text/css">
+				.download_widget a {
+					display: inline;
+				}
+			</style>
 <?php
+		}
 	}
+	// конец класса Download_Widget
 
+	// регистрация download_Widget в Wordpress
+	function register_download_widget()
+	{
+		register_widget('Download_Widget');
+	}
+	// add_action( 'widgets_init', 'register_download_widget' );
 }
-// конец класса Download_Widget
-
-// регистрация download_Widget в Wordpress
-function register_download_widget()
-{
-	register_widget('Download_Widget');
-}
-add_action( 'widgets_init', 'register_download_widget' );

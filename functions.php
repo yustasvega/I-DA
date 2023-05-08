@@ -254,22 +254,19 @@ class Download_Widget extends WP_Widget
 		$file_name = @$instance['file_name'] ?: 'Название файла';
 		$file = @$instance['file'] ?: 'URL файла';
 ?>
-<p>
-	<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
-	<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>"
-		name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($file); ?>">
-</p>
-<p>
-	<label for="<?php echo $this->get_field_id('file_name'); ?>"><?php _e('Название файла'); ?></label>
-	<input class="widefat" id="<?php echo $this->get_field_name('file_name'); ?>"
-		name=" <?php echo $this->get_field_name('file_name'); ?> type=" text" value="<?php echo esc_attr($file); ?>">
-</p>
-<p>
-	<label for="<?php echo $this->get_field_id('file'); ?>"><?php _e('Ссылка на файл'); ?></label>
-	<input class="widefat" id="<?php echo $this->get_field_name('file'); ?> "
-		name=" <?php echo $this->get_field_name('file'); ?> type=" text" value="<?php echo esc_attr($file); ?>">
-</p>
-<?php
+		<p>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($file); ?>">
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id('file_name'); ?>"><?php _e('Название файла'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_name('file_name'); ?>" name=" <?php echo $this->get_field_name('file_name'); ?> type=" text" value="<?php echo esc_attr($file); ?>">
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id('file'); ?>"><?php _e('Ссылка на файл'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_name('file'); ?> " name=" <?php echo $this->get_field_name('file'); ?> type=" text" value="<?php echo esc_attr($file); ?>">
+		</p>
+	<?php
 	}
 
 
@@ -318,12 +315,12 @@ class Download_Widget extends WP_Widget
 		if (!apply_filters('show_download_widget_style', true, $this->id_base))
 			return;
 	?>
-<style type="text/css">
-.download_widget a {
-	display: inline;
-}
-</style>
-<?php
+		<style type="text/css">
+			.download_widget a {
+				display: inline;
+			}
+		</style>
+	<?php
 	}
 }
 
@@ -583,12 +580,12 @@ class Bootsrap_Walker_Comment extends Walker
 	{
 		$tag = ('div' === $args['style']) ? 'div' : 'li';
 	?>
-<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class('', $comment); ?>>
-	<div class="comment-body">
-		<?php _e('Pingback:'); ?> <?php comment_author_link($comment); ?>
-		<?php edit_comment_link(__('Edit'), '<span class="edit-link">', '</span>'); ?>
-	</div>
-	<?php
+		<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class('', $comment); ?>>
+			<div class="comment-body">
+				<?php _e('Pingback:'); ?> <?php comment_author_link($comment); ?>
+				<?php edit_comment_link(__('Edit'), '<span class="edit-link">', '</span>'); ?>
+			</div>
+		<?php
 	}
 
 	/**
@@ -645,18 +642,17 @@ class Bootsrap_Walker_Comment extends Walker
 			$moderation_note = __('Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved.');
 		}
 		?>
-	<<?php echo $tag; ?> <?php comment_class($this->has_children ? 'parent' : '', $comment); ?>
-		id="comment-<?php comment_ID(); ?>">
-		<?php if ('div' !== $args['style']) : ?>
-		<div id="div-comment-<?php comment_ID(); ?>" class="comment-body">
-			<?php endif; ?>
-			<div class="comment-author vcard">
-				<?php
+			<<?php echo $tag; ?> <?php comment_class($this->has_children ? 'parent' : '', $comment); ?> id="comment-<?php comment_ID(); ?>">
+				<?php if ('div' !== $args['style']) : ?>
+					<div id="div-comment-<?php comment_ID(); ?>" class="comment-body">
+					<?php endif; ?>
+					<div class="comment-author vcard">
+						<?php
 						if (0 != $args['avatar_size']) {
 							echo get_avatar($comment, $args['avatar_size']);
 						}
 						?>
-				<?php
+						<?php
 						$comment_author = get_comment_author_link($comment);
 
 						if ('0' == $comment->comment_approved && !$show_pending_links) {
@@ -669,14 +665,14 @@ class Bootsrap_Walker_Comment extends Walker
 							sprintf('<cite class="fn">%s</cite>', $comment_author)
 						);
 						?>
-			</div>
-			<?php if ('0' == $comment->comment_approved) : ?>
-			<em class="comment-awaiting-moderation"><?php echo $moderation_note; ?></em>
-			<br />
-			<?php endif; ?>
+					</div>
+					<?php if ('0' == $comment->comment_approved) : ?>
+						<em class="comment-awaiting-moderation"><?php echo $moderation_note; ?></em>
+						<br />
+					<?php endif; ?>
 
-			<div class="comment-meta commentmetadata">
-				<?php
+					<div class="comment-meta commentmetadata">
+						<?php
 						printf(
 							'<a href="%s">%s</a>',
 							esc_url(get_comment_link($comment, $args)),
@@ -690,9 +686,9 @@ class Bootsrap_Walker_Comment extends Walker
 
 						edit_comment_link(__('(Edit)'), ' &nbsp;&nbsp;', '');
 						?>
-			</div>
+					</div>
 
-			<?php
+					<?php
 					comment_text(
 						$comment,
 						array_merge(
@@ -706,7 +702,7 @@ class Bootsrap_Walker_Comment extends Walker
 					);
 					?>
 
-			<?php
+					<?php
 					comment_reply_link(
 						array_merge(
 							$args,
@@ -721,10 +717,10 @@ class Bootsrap_Walker_Comment extends Walker
 					);
 					?>
 
-			<?php if ('div' !== $args['style']) : ?>
-		</div>
-		<?php endif; ?>
-		<?php
+					<?php if ('div' !== $args['style']) : ?>
+					</div>
+				<?php endif; ?>
+			<?php
 		}
 
 		/**
@@ -751,16 +747,15 @@ class Bootsrap_Walker_Comment extends Walker
 				$moderation_note = __('Ваш комментарий ждет модерации. Это превью; Ваш комментарий будет опубликован после проверки.');
 			}
 			?>
-		<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>"
-			<?php comment_class($this->has_children ? 'parent' : '', $comment); ?>>
-			<article id="div-comment-<?php comment_ID(); ?>" class="media mb-4">
-				<?php
+				<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class($this->has_children ? 'parent' : '', $comment); ?>>
+					<article id="div-comment-<?php comment_ID(); ?>" class="media mb-4">
+						<?php
 						if (0 != $args['avatar_size']) {
 							echo get_avatar($comment, $args['avatar_size'], 'mystery', '', array('class' => 'img-fluid d-flex mr-4 rounded'));
 						}
 						?>
-				<footer>
-					<?php
+						<footer>
+							<?php
 							$comment_author = get_comment_author_link($comment);
 
 							if ('0' == $comment->comment_approved && !$show_pending_links) {
@@ -773,8 +768,8 @@ class Bootsrap_Walker_Comment extends Walker
 								sprintf('<h5>%s</h5>', $comment_author)
 							);
 							?>
-					<div class="comment-metadata">
-						<?php
+							<div class="comment-metadata">
+								<?php
 								printf(
 									'<a href="%s" class="text-muted"><time datetime="%s">%s</time></a>',
 									esc_url(get_comment_link($comment, $args)),
@@ -789,14 +784,14 @@ class Bootsrap_Walker_Comment extends Walker
 
 								edit_comment_link(__('Edit'), ' <span class="edit-link">', '</span>');
 								?>
-					</div><!-- .comment-metadata -->
+							</div><!-- .comment-metadata -->
 
-					<?php if ('0 ' == $comment->comment_approved) : ?>
-					<em class="comment-awaiting-moderation"><?php echo $moderation_note; ?></em>
-					<?php endif; ?>
-					<div class="mt-2" <?php comment_text(); ?> </div>
-						<!-- .mt-2 -->
-						<?php
+							<?php if ('0 ' == $comment->comment_approved) : ?>
+								<em class="comment-awaiting-moderation"><?php echo $moderation_note; ?></em>
+							<?php endif; ?>
+							<div class="mt-2" <?php comment_text(); ?> </div>
+								<!-- .mt-2 -->
+								<?php
 								if ('1' == $comment->comment_approved || $show_pending_links) {
 									comment_reply_link(
 										array_merge(
@@ -812,8 +807,41 @@ class Bootsrap_Walker_Comment extends Walker
 									);
 								}
 								?>
-				</footer><!-- .comment-meta -->
-			</article><!-- .comment-body -->
+						</footer><!-- .comment-meta -->
+					</article><!-- .comment-body -->
 			<?php
 		}
+	}
+	// Регистрируем тип записи - услуги
+	add_action('init', 'my_custom_init');
+	function my_custom_init()
+	{
+		register_post_type('service', array(
+			'labels'            		=> array(
+				'name'					  		=> __('Услуги'), // Основное название типа записи
+				'singular_name'				=> __('Услуга'), // Основное название типа записи
+				'add_new'							=> __('Добавить новую'), // Основное название типа записи
+				'add_new_item'				=> __('Добавить новую услугу'), // Основное название типа записи
+				'edit_item'						=> __('Редактировать услугу'), // Основное название типа записи
+				'new_item'						=> __('Новая услуга'), // Основное название типа записи
+				'view_item'						=> __('Посмотреть услугу'), // Основное название типа записи
+				'search_item'					=> __('Найти услугу'), // Основное название типа записи
+				'not_found'						=> __(' Услуг не найдено'), // Основное название типа записи
+				'not_found_in_trash'	=> __(' В корзине услуг не найдено'), // Основное название типа записи
+				'parent_item_color'		=> '', // Основное название типа записи
+				'menu_name'					  => 'Услуги', // Основное название типа записи
+			),
+			'public'				            => true,
+			'publicly_queryable'				=> true,
+			'show_id'				            => true,
+			'show_in_menu'				      => true,
+			'query_var'				          => true,
+			'rewrite'			            	=> true,
+			'capability_type'		    		=> 'post',
+			'menu-icon'				          => 'dashicon-aldmin-site',
+			'has_archive'				        => true,
+			'hierarchical'			      	=> false,
+			'menu_position'			      	=> 5,
+			'supports'				          => array('title', 'editor', 'autor', 'thumbnail', 'excerpt')
+		));
 	}

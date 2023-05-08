@@ -28,52 +28,8 @@
 		<?php the_content(); ?>
 	</div>
 </section>
-<!--  SERVICE AREA START  -->
-<section id="about" class="bg-light">
-	<div class="about-bg-img d-none d-lg-block d-md-block"></div>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-7 col-sm-12 col-md-8">
-				<div class="about-content">
-					<h5 class="subtitle">О нас</h5>
-					<h3>Мы делаем рабочий инструмент <br />для вашего бизнеса</h3>
-					<p>
-						Мы создадим сайт про вашу компанию и вам не придется заказывать услуги у фрилансеров, переживая за сроки
-						проекта и его качество. В нашей команде есть все нужные специалисты, которые сделаю отличный сайт
-					</p>
 
-					<ul class="about-list">
-						<li><i class="icofont icofont-check-circled"></i> Адаптивный</li>
-						<li><i class="icofont icofont-check-circled"> </i> С анимацией</li>
-						<li><i class="icofont icofont-check-circled"> </i> С чистым кодом</li>
-						<li><i class="icofont icofont-check-circled"> </i> Готовый к использованию</li>
-						<li><i class="icofont icofont-check-circled"> </i> Настроенный под SEO</li>
-						<li><i class="icofont icofont-check-circled"></i> Кроссбраузерный</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!--  SERVICE AREA END  -->
-
-<!--  SERVICE PARTNER START  -->
-<section id="service-head" class="bg-feature">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 col-sm-12 m-auto">
-				<div class="section-heading text-white">
-					<h4 class="section-title">Диджитал полного цикла</h4>
-					<p>
-						Это означает, что мы сможем выполнить любую цифровую задачу: <br />
-						видео, маркетинг, реклама, разработка или дизайн.
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!--  SERVICE PARTNER END  -->
+<?php echo get_template_part('template-parts/content', 'service', ['class' => 'bg-feature']); ?>
 
 <!--  SERVICE AREA START  -->
 <section id="service">

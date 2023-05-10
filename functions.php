@@ -844,4 +844,62 @@ class Bootsrap_Walker_Comment extends Walker
 			'menu_position'			      	=> 5,
 			'supports'				          => array('title', 'editor', 'autor', 'thumbnail', 'excerpt')
 		));
+		// Регистрируем тип записи -Партнеры
+		register_post_type('partners', array(
+			'labels'            		=> array(
+				'name'					  		=> __('Партнеры'), // Основное название типа записи
+				'singular_name'				=> __('Партнер'), // Основное название типа записи
+				'add_new'							=> __('Добавить нового'), // Основное название типа записи
+				'add_new_item'				=> __('Добавить нового партнера'), // Основное название типа записи
+				'edit_item'						=> __('Редактировать партнера'), // Основное название типа записи
+				'new_item'						=> __('Новая партнер'), // Основное название типа записи
+				'view_item'						=> __('Посмотреть партнера'), // Основное название типа записи
+				'search_item'					=> __('Найти партнера'), // Основное название типа записи
+				'not_found'						=> __(' Партнера не найдено'), // Основное название типа записи
+				'not_found_in_trash'	=> __(' В корзине партнеров не найдено'), // Основное название типа записи
+				'parent_item_color'		=> '', // Основное название типа записи
+				'menu_name'					  => ('Партнеры') // Основное название типа записи
+			),
+			'public'				            => true,
+			'publicly_queryable'				=> true,
+			'show_id'				            => true,
+			'show_in_menu'				      => true,
+			'query_var'				          => true,
+			'rewrite'			            	=> true,
+			'capability_type'		    		=> 'post',
+			'menu-icon'				          => 'dashicon-businessman',
+			'has_archive'				        => true,
+			'hierarchical'			      	=> false,
+			'menu_position'			      	=> 6,
+			'supports'				          => array('title', 'thumbnail')
+		));
+		// Регестрируем тип записи - Тарифы
+		register_post_type('price', array(
+			'labels'            		=> array(
+				'name'					  		=> __('Тарифы'), // Основное название типа записи
+				'singular_name'				=> __('Тариф'), // Основное название типа записи
+				'add_new'							=> __('Добавить новый'), // Основное название типа записи
+				'add_new_item'				=> __('Добавить новый тариф'), // Основное название типа записи
+				'edit_item'						=> __('Редактировать тариф'), // Основное название типа записи
+				'new_item'						=> __('Новый тариф'), // Основное название типа записи
+				'view_item'						=> __('Посмотреть тариф'), // Основное название типа записи
+				'search_item'					=> __('Найти тариф'), // Основное название типа записи
+				'not_found'						=> __('Тарифов не найдено'), // Основное название типа записи
+				'not_found_in_trash'	=> __('В корзине тарифов не найдено'), // Основное название типа записи
+				'parent_item_color'		=> '', // Основное название типа записи
+				'menu_name'					  => ('Тарифы') // Основное название типа записи
+			),
+			'public'				            => true,
+			'publicly_queryable'				=> true,
+			'show_id'				            => true,
+			'show_in_menu'				      => true,
+			'query_var'				          => true,
+			'rewrite'			            	=> true,
+			'capability_type'		    		=> 'post',
+			'menu-icon'				          => 'dashicon-money-alt',
+			'has_archive'				        => true,
+			'hierarchical'			      	=> false,
+			'menu_position'			      	=> 7,
+			'supports'				          => array('title', 'editor', 'autor', 'thumbnail', 'excerpt')
+		));
 	}

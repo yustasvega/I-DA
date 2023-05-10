@@ -4,7 +4,11 @@
 		<div class="row justify-content-center">
 			<div class="col-lg-8 col-sm-12 m-auto">
 				<div class="heading text-white text-center">
-					<h4 class="section-title text-white">Диджитал полного цикла</h4>
+					<h4 class="section-title text-white">
+						<?php if (!empty($args['custom+title'])) {
+							echo $args['custom_title'];
+						} else
+							echo 'Список услуг' ?></h4>
 					<p>
 						Это означает, что мы сможем выполнить любую цифровую задачу: <br />
 						видео, маркетинг, реклама, разработка или дизайн.
